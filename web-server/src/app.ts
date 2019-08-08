@@ -12,6 +12,7 @@ export class main {
     constructor() {
 
         const app = express();
+        const port = process.env.PORT || 3000
 
 //Define paths for express config
         const publicDirectoryPath = path.join(__dirname, '../public');
@@ -57,7 +58,11 @@ export class main {
                 })
             }
 
-            this.geocode.geocode(req.query.address, (error, {latitude = '', longitude, location} = {latitude: undefined,longitude: undefined,location: undefined}) => {
+            this.geocode.geocode(req.query.address, (error, {latitude = '', longitude, location} = {
+                latitude: undefined,
+                longitude: undefined,
+                location: undefined
+            }) => {
 
                 if (error) {
                     return res.send({error});
@@ -109,8 +114,8 @@ export class main {
             })
         });
 
-        app.listen(3000, () => {
-            console.log('Server is up on port 3000')
+        app.listen(port, () => {
+            console.log('Server is up on port ' + port)
         });
 
     }

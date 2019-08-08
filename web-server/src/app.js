@@ -11,6 +11,7 @@ var main = /** @class */ (function () {
         this.geocode = new geocode_1.Geocode();
         this.forecast = new forecast_1.Forecast();
         var app = express();
+        var port = process.env.PORT || 3000;
         //Define paths for express config
         var publicDirectoryPath = path.join(__dirname, '../public');
         var viewsPath = path.join(__dirname, '../templates/views');
@@ -47,7 +48,11 @@ var main = /** @class */ (function () {
                 });
             }
             _this.geocode.geocode(req.query.address, function (error, _a) {
-                var _b = _a === void 0 ? { latitude: undefined, longitude: undefined, location: undefined } : _a, _c = _b.latitude, latitude = _c === void 0 ? '' : _c, longitude = _b.longitude, location = _b.location;
+                var _b = _a === void 0 ? {
+                    latitude: undefined,
+                    longitude: undefined,
+                    location: undefined
+                } : _a, _c = _b.latitude, latitude = _c === void 0 ? '' : _c, longitude = _b.longitude, location = _b.location;
                 if (error) {
                     return res.send({ error: error });
                 }
@@ -88,8 +93,8 @@ var main = /** @class */ (function () {
                 name: 'Wanja Münch'
             });
         });
-        app.listen(3000, function () {
-            console.log('Server is up on port 3000');
+        app.listen(port, function () {
+            console.log('Server is up on port ' + port);
         });
     }
     return main;
