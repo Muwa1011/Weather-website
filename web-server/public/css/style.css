@@ -38,6 +38,11 @@ header a {
     width: 250px;
 }
 
+.weatherImg{
+    padding: 30px;
+    width: 15px;
+}
+
 .main-content{
     flex-grow: 1;
 }

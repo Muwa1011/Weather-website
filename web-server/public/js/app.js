@@ -9,6 +9,8 @@ const msgTwo = document.querySelector('#msg-2')
 const msgThree = document.querySelector('#msg-3')
 const msgFour = document.querySelector('#msg-4')
 
+const weatherImg = document.querySelector('#weatherImg')
+
 
 
 weatherForm.addEventListener('submit',(e) => {
@@ -21,6 +23,7 @@ weatherForm.addEventListener('submit',(e) => {
     msgTwo.textContent = ''
     msgThree.textContent = ''
     msgFour.textContent = ''
+    weatherImg.src = "#"
 
     fetch(url).then((response) => {
 
@@ -29,6 +32,20 @@ weatherForm.addEventListener('submit',(e) => {
                 msgOne.textContent = data.error
                 msgTwo.textContent = ''
             } else {
+                if(data.forecastData.data.includes(' Den ganzen Tag lang Klar.')){
+                    weatherImg.src = 'img/sunny.png'
+                }
+                if(data.forecastData.data.includes('leicht bewölkt')){
+                    weatherImg.src = 'img/sunny.png'
+                }
+                if(data.forecastData.data.includes('Leichter Regen')){
+                    weatherImg.src = 'img/raining.png'
+                }
+                if(data.forecastData.data.includes('überwiegend bewölkt')){
+                    weatherImg.src = 'img/cloudy.png'
+                }
+
+
                 msgOne.textContent = data.location
                 msgTwo.textContent = data.forecastData.data
                 msgThree.textContent = data.forecastData.data2
