@@ -13,7 +13,7 @@ weatherForm.addEventListener('submit',(e) => {
     e.preventDefault()
 
     const location = search.value
-    const url = '/weather?address=' + location.toString();
+    const url = '/weather?address=' + location;
 
     msgOne.textContent = 'loading..'
     msgTwo.textContent = ''
