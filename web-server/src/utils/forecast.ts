@@ -13,7 +13,9 @@ export class Forecast {
                 callback('Location not found', undefined);
             } else {
                 callback(undefined, {
-                    data: (body.daily.data[0].summary + ' Temperatur: ' + body.currently.temperature + '°C' + ' Regen Wahrscheinlichkeit: ' + body.currently.precipProbability * 100 + '%')
+                    data: ('Jetzt: ' + body.daily.data[0].summary + ' Temperatur: ' + body.currently.temperature + '°C' + ' Regen Wahrscheinlichkeit: ' + body.currently.precipProbability * 100 + '%'),
+                    data2: ('Morgen: ' + body.daily.data[1].summary + ' Max/Min Temperatur: '+ body.daily.data[1].temperatureLow + ' - ' + body.daily.data[1].temperatureHigh + '°C.' + ' Regen Wahrscheinlichkeit: ' + body.daily.data[1].precipProbability * 100 + '%'),
+                    data3: ('Übermorgen: ' + body.daily.data[2].summary + ' Max/Min Temperatur: '+ body.daily.data[2].temperatureLow + ' - ' + body.daily.data[2].temperatureHigh + '°C.' + ' Regen Wahrscheinlichkeit: ' + body.daily.data[2].precipProbability * 100 + '%')
                 })
 
             }
